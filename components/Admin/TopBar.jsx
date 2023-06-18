@@ -2,9 +2,10 @@
 import SignOut from "../auth/SignOut";
 import { useAuthContext } from "../context/AuthContext"
 import './admin.scss'
-import { PlusCircle, Pencil, Person } from "react-bootstrap-icons";
+import { PlusCircle, Pencil, Person, Folder } from "react-bootstrap-icons";
 import { EditModeContext } from '../context/EditContext'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import FileManager from "../fileManager/FileManager";
 
 export default function TopBar() {
 
@@ -12,14 +13,28 @@ export default function TopBar() {
 
     const { editMode, toggleEditMode } = useContext(EditModeContext)
 
+    const [FileManagerOpen, setFileManagerOpen] = useState(false)
+
+    const toggleFileManger = () => { 
+        setFileManagerOpen(!FileManagerOpen)
+    }
+
+    const closeFileManager = () => {
+        setFileManagerOpen(false)
+    }
+
     if (user) {
         return (
+            <>
             <div className="admin-section top-bar">
                 {/* <button className="btn icon btn-primary"><PlusCircle /> Add Section</button> */}
-                <button onClick={toggleEditMode} className={`btn icon ${editMode ? 'btn-primary': 'btn-secondary'}`}><Pencil />{editMode ? 'Editing' : 'Edit'}</button>
+                <button onClick={toggleEditMode} className={`btn icon ${editMode ? 'btn-primary': 'btn-secondary'}`}><Pencil />{editMode ? 'Edit Mode' : 'Edit Mode'}</button>
+                <button onClick={toggleFileManger} className={`btn icon ${FileManagerOpen ? 'btn-primary': 'btn-secondary'}`}><Folder />File Manager</button>
                 <button className="ms-auto btn icon btn-secondary"><Person />Admin Area</button>
                 <SignOut />
             </div>
+            <FileManager openState={FileManagerOpen} close={closeFileManager}/>
+            </>
         )   
     }
 

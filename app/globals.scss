@@ -63,7 +63,58 @@ button.icon {
 
 dialog {
     position: fixed;
-    top: 50vh;
-    transform: translate(0, -50%);
-    border: 1px solid var(--dark-grey);
+    width: 600px;
+    top: 100px;
+    max-width: 95%;
+    margin: 0 auto;
+    min-height: 200px;
+    border-radius: 8px;
+    z-index: 1000;
+    border: 2px solid var(--light-grey);
+    box-shadow: 0 0 5px var(--medium-shadow);
+
+    .dialog {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .dialog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--light-grey);
+        padding-bottom: 20px;
+
+        .close-button {
+            border-radius: 50%;
+            transition: 0.2s;
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(133, 133, 133, 0.249);
+            }
+        }
+    }
+
+    .dialog-body {
+        border-bottom: 1px solid var(--light-grey);
+        padding-bottom: 20px;
+
+        textarea {
+            resize: none;
+            border: 1px solid var(--light-grey);
+            font-family: inherit;
+            border-radius: 4px;
+            padding: 5px;
+            height: 100px;
+            width: 100%;
+        }
+    }
+
+    .dialog-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
 }

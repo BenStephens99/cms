@@ -3,6 +3,7 @@ import { EditModeContext } from "../context/EditContext"
 import { useContext, useState } from "react"
 import './editableSection.scss'
 import EditModal from "./EditModal"
+import { useAuthContext } from "../context/AuthContext"
 
 export default function EditableSection(props) {
 
@@ -10,15 +11,23 @@ export default function EditableSection(props) {
 
   let [modalOpen, setModalOpen] = useState(false)
 
-  const toggleModalOpen = () => {
-    setModalOpen(!modalOpen)
+  const { user } = useAuthContext()
+
+  const openModal = () => {
+    if (user && editMode) {
+      setModalOpen(true)
+    }
+  }
+
+  const closeModal = () => { 
+      setModalOpen(false) 
   }
 
   return (
     <>
-      <EditModal modalOpen={modalOpen} />
-      <div className={`editable-section ${editMode ? 'editing' : ''}`} onClick={toggleModalOpen}>
-        {props.content}
+      <EditModal id={props.id} type={props.type} modalOpen={modalOpen} content={props.content} closeModal={closeModal}/>
+      <div className={`editable-section ${editMode ? 'editing' : ''}`} onClick={openModal}>
+        {props.display}
       </div>
     </>
 

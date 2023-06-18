@@ -1,12 +1,14 @@
-import EditableSection from "../EditableSection"
+import EditableSection from "../EditableSection";
+import getDocument from "@/api/firebase/database/getDocument";
 
-export default function TextPlugin() {
-    return (
-        <div className="text-plugin">
-        <EditableSection content={
-                <p>content menu</p>
-        }/>
-        </div>
-
-    )
+export default async function TextPlugin(props) {
+  const result = await getDocument("editableSections", props.id);
+  return (
+    <div className="text-plugin">
+      <EditableSection id={props.id} type={result?.type} content={result?.content}
+        display={
+          <p>{result?.content}</p>
+        } />
+    </div>
+  );
 }

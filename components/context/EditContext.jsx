@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useDeferredValue, useState } from 'react';
 import { useAuthContext } from './AuthContext';
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 
 export const EditModeContext = createContext();
 
@@ -19,7 +19,6 @@ export const EditModeProvider = ({ children }) => {
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
-    console.log(editMode)
   };
 
   return (

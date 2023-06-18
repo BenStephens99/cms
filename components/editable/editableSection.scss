@@ -1,6 +1,8 @@
 .editable-section {
     border: none;
     position: relative;
+    min-height: 20px;
+    min-width: 20px;
 }
 
 .editable-section.editing {
