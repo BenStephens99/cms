@@ -30,9 +30,9 @@ export default function FilesAndFolders(props) {
         {props.folders.map((folder, index) => (
           <FolderThumbnail key={index} name={folder} onClick={props.onFolderClick} />
         ))}
-        {props.files.map((file, index) => (
+        {/* {props.files.map((file, index) => (
           <FileThumbnail key={index} name={file} />
-        ))}
+        ))} */}
         {props.images.map((image, index) => (
           <ImageThumbnail key={index} name={image.name} url={image.url} />
         ))}

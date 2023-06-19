@@ -72,6 +72,7 @@ dialog {
     z-index: 1000;
     border: 2px solid var(--light-grey);
     box-shadow: 0 0 5px var(--medium-shadow);
+    opacity: 1;
 
     .dialog {
         display: flex;

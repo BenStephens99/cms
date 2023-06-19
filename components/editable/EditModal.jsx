@@ -5,6 +5,7 @@ import { X } from "react-bootstrap-icons"
 import updateDocument from "@/api/firebase/database/updateDocument"
 import { useRouter } from "next/navigation"
 import "./editModal.scss"
+import { toast } from "react-hot-toast"
 
 export default function EditModal(props) {
   let component = null
@@ -22,8 +23,8 @@ export default function EditModal(props) {
   }
 
   const updatePlugin = async () => {
-    console.log(content)
     await updateDocument("editableSections", props.id, content)
+    toast.success("Plugin updated")
     router.refresh()
     props.closeModal()
   }
