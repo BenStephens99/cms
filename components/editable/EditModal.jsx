@@ -4,6 +4,7 @@ import EditTextPlugin from "./plugins/modalComponents/EditTextPlugin"
 import { X } from "react-bootstrap-icons"
 import updateDocument from "@/api/firebase/database/updateDocument"
 import { useRouter } from "next/navigation"
+import "./editModal.scss"
 
 export default function EditModal(props) {
   let component = null
@@ -29,7 +30,7 @@ export default function EditModal(props) {
 
   return (
     <dialog open={props.modalOpen}>
-      <div className="dialog">
+      <div className="dialog edit-modal">
         <div className="dialog-header">
           <h4>Edit Section</h4>
           <span className="close-button" onClick={props.closeModal}><X height={"2em"} width={"2em"}/></span>

@@ -63,10 +63,10 @@ button.icon {
 
 dialog {
     position: fixed;
-    width: 600px;
     top: 100px;
     max-width: 95%;
     margin: 0 auto;
+    min-width: 150px;
     min-height: 200px;
     border-radius: 8px;
     z-index: 1000;

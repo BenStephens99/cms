@@ -1,23 +1,52 @@
 .files-folders {
-  .directory {
+  width: 1000px;
+  max-width: 100%;
+  height: 800px;
+  max-height: 50vh;
+  padding-right: 20px;
+  overflow-y: scroll;
+
+  .breadcrums {
     border-bottom: 1px solid var(--light-grey);
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     margin-bottom: 20px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .breadcrum {
+    display: flex;
+    gap: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .display {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 170px);
+    justify-content: space-between;
+    gap: 10px;
   }
 }
 
-.files-folders .file,
-.files-folders .folder {
-  width: 150px;
-  display: flex;
-  gap: 5px;
-  flex-direction: column;
+.files-folders .thumbnail {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+  grid-template-rows: 100px auto;
+  gap: 5px;
+}
+
+.files-folders .image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.files-folders .folder {
+  cursor: pointer;
 }

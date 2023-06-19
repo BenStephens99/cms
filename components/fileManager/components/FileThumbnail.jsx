@@ -1,10 +1,10 @@
 import { FileEarmarkText } from "react-bootstrap-icons";
 
-export default function File(props) {
+export default function FileThumbnail(props) {
     return (
-        <div className="file">
+        <div className="file thumbnail">
             <FileEarmarkText height={'3em'} width={'3em'}/>
-            <p>{props.name}</p>
+            <span>{props.name}</span>
         </div>
     )
 }

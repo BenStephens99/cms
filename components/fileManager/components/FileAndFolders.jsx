@@ -1,36 +1,40 @@
-import { useEffect, useState } from 'react';
-import getAllFoldersAndFiles from '@/api/firebase/database/getAllFoldersAndFiles';
-import File from './File';
-import Folder from './Folder';
+'use client'
+import FileThumbnail from './FileThumbnail';
+import FolderThumbnail from './FolderThumbnail';
+import ImageThumbnail from './ImageThumbnail';
 import './filesAndFolders.scss'
 
 export default function FilesAndFolders(props) {
-  const [folders, setFolders] = useState([]);
-  const [files, setFiles] = useState([]);
 
-  useEffect(() => {
-    const fetchFoldersAndFiles = async () => {
-      const { folders, files } = await getAllFoldersAndFiles(props.dir);
-      setFolders(folders);
-      setFiles(files);
-    };
+  const breadcrums = props.dir.split('/');
 
-    fetchFoldersAndFiles();
-  }, [props.dir]);
-
-
+  const handleBreadcrumClick = (index) => {
+    const clickedDir = breadcrums.slice(0, index + 1).join('/');
+    props.onBreadcrumClick(clickedDir);
+  };
 
   return (
     <div className='files-folders'>
-      <div className='directory'>
-        <h4>{props.dir}</h4>
+      <div className='breadcrums'>
+        <span className='breadcrum' onClick={() => handleBreadcrumClick('/')}>
+          <span>Home</span>
+        </span>
+        {breadcrums.map((breadcrum, index) => (
+          <span className='breadcrum' key={index} onClick={() => handleBreadcrumClick(index)}>
+            <span>{breadcrum}</span>
+            <span>/</span>
+          </span>
+        ))}
       </div>
       <div className='display'>
-        {folders.map((folder, index) => (
-          <Folder key={index} name={folder} />
+        {props.folders.map((folder, index) => (
+          <FolderThumbnail key={index} name={folder} onClick={props.onFolderClick} />
         ))}
-        {files.map((file, index) => (
-          <File key={index} name={file} />
+        {props.files.map((file, index) => (
+          <FileThumbnail key={index} name={file} />
+        ))}
+        {props.images.map((image, index) => (
+          <ImageThumbnail key={index} name={image.name} url={image.url} />
         ))}
       </div>
     </div>
