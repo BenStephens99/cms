@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
           <EditModeProvider>
             <Toaster toastOptions={{
               style: {
-                fontSize: '1.2rem',
+                fontSize: '1rem',
               },
             }} />
             <TopBar />

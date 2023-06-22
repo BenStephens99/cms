@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState} from "react"
-import EditTextPlugin from "./plugins/modalComponents/EditTextPlugin"
+import EditTextPlugin from "./plugins/TextPlugin/EditTextPlugin"
+import EditImagePlugin from "./plugins/ImagePlugin/EditImagePlugin"
 import { X } from "react-bootstrap-icons"
 import updateDocument from "@/api/firebase/database/updateDocument"
 import { useRouter } from "next/navigation"
@@ -17,6 +18,9 @@ export default function EditModal(props) {
   switch (props.type) {
     case "text-plugin":
       component = <EditTextPlugin id={props.id} content={props.content} setContent={setContent} />
+      break;
+      case "image-plugin":
+      component = <EditImagePlugin id={props.id} content={props.content} setContent={setContent} />
       break;
     default:
       component = <p>Unknown type</p>

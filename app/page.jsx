@@ -1,6 +1,6 @@
-import TextPlugin from '@/components/editable/plugins/TextPlugin'
+import TextPlugin from '@/components/editable/plugins/TextPlugin/TextPlugin'
+import ImagePlugin from '@/components/editable/plugins/ImagePlugin/ImagePlugin'
 import styles from './home.scss'
-import ContentMenu from '@/components/editable/plugins/ContentMenu'
 
 export default function Home() {
 
@@ -8,7 +8,9 @@ export default function Home() {
     <main className={styles.main}>
       <TextPlugin id="u9yUP0pX7TYyjJFUYoyR" />
 
-      <TextPlugin id="EooJcNzP9Cm4Conwzp2D" />
+      <div className='imagesContainer'>
+        <ImagePlugin id="rzMd9LJQ0Ng2Z0Fk8Rko" />
+      </div>
 
     </main>
   )

@@ -1,5 +1,4 @@
 'use client'
-import FileThumbnail from './FileThumbnail';
 import FolderThumbnail from './FolderThumbnail';
 import ImageThumbnail from './ImageThumbnail';
 import './filesAndFolders.scss'
@@ -14,7 +13,7 @@ export default function FilesAndFolders(props) {
   };
 
   return (
-    <div className='files-folders'>
+    <div className={`files-folders ${props.deleteMode ? 'delete-mode' : ''}`}>
       <div className='breadcrums'>
         <span className='breadcrum' onClick={() => handleBreadcrumClick('/')}>
           <span>Home</span>
@@ -34,7 +33,7 @@ export default function FilesAndFolders(props) {
           <FileThumbnail key={index} name={file} />
         ))} */}
         {props.images.map((image, index) => (
-          <ImageThumbnail key={index} name={image.name} url={image.url} />
+          <ImageThumbnail key={index} name={image.name} onClick={props.onFileClick} url={image.url} />
         ))}
       </div>
     </div>
