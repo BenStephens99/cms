@@ -34,6 +34,7 @@ form {
     gap: 20px;
     border-radius: 8px;
     padding: 50px;
+    background-color: white;
 
     fieldset {
         display: flex;
@@ -68,15 +69,33 @@ dialog {
     min-height: 200px;
     margin-bottom: 20px;
     border-radius: 8px;
-    top: 40px;
-    z-index: 1000;
+    top: 80px;
+    z-index: 1001;
     border: 2px solid var(--light-grey);
     box-shadow: 0 0 5px var(--medium-shadow);
+    padding: 0;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: fixed;
+        top: calc(50% + 35px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+        height: calc(100vh - 70px);
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
 
     .dialog {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        z-index: 1000;
+        position: relative;
+        background-color: white;
+        padding: 20px;
     }
 
     .dialog-header {
@@ -85,6 +104,8 @@ dialog {
         align-items: center;
         border-bottom: 1px solid var(--light-grey);
         padding-bottom: 20px;
+        position: relative;
+        z-index: inherit;
 
         .close-button {
             border-radius: 50%;
