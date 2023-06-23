@@ -1,0 +1,31 @@
+.image-track-holder {
+    height: 60vmin;
+    width: 100vw;
+    position: relative;
+    transition: 400ms;
+    background-color: var(--backgroundColor);
+    z-index: 2;
+  }
+  
+  .image-track {
+    display: flex;
+    gap: 4vmin;
+    position: absolute;
+    left: calc(50% - 20vmin);
+    animation-fill-mode: forwards;
+    user-select: none;
+    animation-name: show-images;
+    animation-duration: 2s;
+    animation-delay: 2s;
+  }
+  
+  .image {
+    width: 30vmin;
+    height: 45vmin;
+    object-fit: cover;
+    object-position: 100% center;
+  }
+  
+  .image-track-holder.open {
+    transform: translateY(-50%)
+  }

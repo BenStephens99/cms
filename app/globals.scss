@@ -68,10 +68,10 @@ dialog {
     min-height: 200px;
     margin-bottom: 20px;
     border-radius: 8px;
+    top: 40px;
     z-index: 1000;
     border: 2px solid var(--light-grey);
     box-shadow: 0 0 5px var(--medium-shadow);
-    margin-top: 10px;
 
     .dialog {
         display: flex;

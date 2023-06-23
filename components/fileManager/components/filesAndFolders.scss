@@ -66,3 +66,14 @@
     }
   }
 }
+
+.select-mode {
+  .files-folders {
+    .image {
+      &:hover {
+        cursor: pointer;
+        background-color: var(--light-grey);
+      }
+    }
+  }
+}

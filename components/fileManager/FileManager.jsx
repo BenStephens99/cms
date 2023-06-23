@@ -32,7 +32,7 @@ export default function FileManager(props) {
 
   useEffect(() => {
     fetchFoldersAndFiles();
-  }, [currentDir]);
+  }, [currentDir, props.openState]);
 
   const handleFolderClick = async (folderName) => {
     if (deleteMode) {
@@ -67,7 +67,7 @@ export default function FileManager(props) {
 
   const handleNewFolder = async (name) => {
     await createFolder(`${currentDir}/${name}`);
-    await fetchFoldersAndFiles();
+    fetchFoldersAndFiles();
   }
 
   const toggleFolderEditor = () => {
@@ -81,7 +81,7 @@ export default function FileManager(props) {
   return (
     <dialog open={props.openState}>
       <NewFolderEditor folderEditorOpen={folderEditorOpen} toggleFolderEditor={toggleFolderEditor} createFolder={handleNewFolder} />
-      <div className="dialog file-manager">
+      <div className={`dialog file-manager ${props.onFileClick ? 'select-mode' : ''}`}>
         <div className="dialog-header">
           <h4>File Manager</h4>
           <span className="close-button" onClick={props.close}><X height={"2em"} width={"2em"} /></span>

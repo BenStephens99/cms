@@ -22,9 +22,9 @@ export default function NewFolderEditor(props) {
           <h5>New Folder</h5>
         </div>
         <div className="dialog-body">
-          <div class="input-group">
-            <span class="input-group-text">Name</span>
-            <input type="text" class="form-control" placeholder="Background Images" onChange={(e) => setFolderName(e.target.value)} />
+          <div className="input-group">
+            <span className="input-group-text">Name</span>
+            <input type="text" className="form-control" placeholder="Background Images" onChange={(e) => setFolderName(e.target.value)} />
           </div>
         </div>
         <div className="dialog-footer">

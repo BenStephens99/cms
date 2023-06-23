@@ -27,6 +27,7 @@ export default function EditModal(props) {
   }
 
   const updatePlugin = async () => {
+    console.log(content)
     await updateDocument("editableSections", props.id, content)
     toast.success("Plugin updated")
     router.refresh()
