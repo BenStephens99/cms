@@ -1,8 +1,11 @@
 .image-gallery, .edit-image-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
     gap: 20px;
 
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
 
     .image-column {
         display: flex;
@@ -12,6 +15,8 @@
 }
 
 .edit-image-gallery {
+    width: 600px;
+    max-width: 90vw;
 
     .edit-gallery-column {
         display: flex;
@@ -20,13 +25,15 @@
     }
 
     .thumb {
-        border: 1px solid black;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
+        max-width: 300px;
+        position: relative;
+
+
+        button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
 
         p {
             margin: 0;

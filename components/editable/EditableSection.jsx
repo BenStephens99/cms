@@ -14,6 +14,7 @@ export default function EditableSection(props) {
   const { user } = useAuthContext()
 
   const openModal = (e) => {
+    console.log(props)
     e.stopPropagation()
     closeEditMode()
     if (user && editMode) {

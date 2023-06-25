@@ -25,11 +25,6 @@ export default async function ImageGalleryPlugin(props) {
               <ImagePlugin key={img} id={img} />
             ))}
           </div>
-          <div className="image-column">
-            {images.col3.map((img) => (
-              <ImagePlugin key={img} id={img} />
-            ))}
-          </div>
         </div>
       }
     />

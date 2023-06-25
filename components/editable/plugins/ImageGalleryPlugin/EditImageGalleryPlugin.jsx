@@ -1,6 +1,10 @@
 'use client'
 import './imageGallery.scss'
 import addData from '@/api/firebase/database/addData'
+import Image from 'next/image'
+import getDocument from '@/api/firebase/database/getDocument'
+import { useState, useEffect } from 'react'
+import placeHolderImage from '@/assets/images/placeholder-image.png'
 
 export default function EditImageGalleryPlugin(props) {
 
@@ -15,15 +19,23 @@ export default function EditImageGalleryPlugin(props) {
 
   return (
     <div className="edit-image-gallery">
-      <EditGalleryColumn images={images.col1} updateContent={updateContent} deleteDoc={props.deleteDoc} addNewDoc={props.addNewDoc}/>
-      <EditGalleryColumn images={images.col2} updateContent={updateContent} deleteDoc={props.deleteDoc} addNewDoc={props.addNewDoc}/>
-      <EditGalleryColumn images={images.col3} updateContent={updateContent} deleteDoc={props.deleteDoc} addNewDoc={props.addNewDoc}/>
+      {Object.keys(images)
+        .sort((a, b) => Number(a.replace('col', '')) - Number(b.replace('col', '')))
+        .map((key) => (
+          <EditGalleryColumn
+            key={key}
+            images={images[key]}
+            updateContent={updateContent}
+            deleteDoc={props.deleteDoc}
+            addNewDoc={props.addNewDoc}
+          />
+        ))}
     </div>
   )
 }
 
 function EditGalleryColumn(props) {
-  
+
   const addImage = async () => {
     const newImage = {
       type: 'image-plugin',
@@ -48,11 +60,28 @@ function EditGalleryColumn(props) {
     <div className="edit-gallery-column">
       {props.images.map((img) => (
         <div key={img} className='thumb'>
-          <p>{img}</p>
+          <ImageThumb id={img} />
           <button onClick={() => deleteImage(img)} className='btn btn-danger'>Delete</button>
         </div>
       ))}
       <button onClick={() => addImage(props.col)} className='btn btn-primary add-image'>Add Image</button>
     </div>
   )
+}
+
+function ImageThumb(props) {
+  const [result, setResult] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const document = await getDocument("editableSections", props.id);
+      setResult(document);
+    };
+
+    fetchData();
+  }, [props.id]);
+
+  return (
+    <Image src={result?.content?.url ? result.content.url : placeHolderImage} alt={result?.content?.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
+  );
 }
