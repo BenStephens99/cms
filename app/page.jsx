@@ -7,9 +7,11 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <TextPlugin id="u9yUP0pX7TYyjJFUYoyR" />
 
-      <ImageGalleryPlugin id="gallery"/>
+
+      <TextPlugin id="HVzkT1vCnHWAlpG1cmKO" />
+
+      <ImageGalleryPlugin id="gallery" />
 
     </main>
   )

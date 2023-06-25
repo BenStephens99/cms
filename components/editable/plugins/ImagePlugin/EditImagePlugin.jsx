@@ -4,6 +4,7 @@ import { useState } from "react"
 import FileManager from "@/components/fileManager/FileManager"
 import getFileUrl from "@/api/firebase/database/getFileUrl"
 import './editImagePlugin.scss'
+import placeHolderImage from '@/assets/images/placeholder-image.png'
 
 export default function EditImagePlugin(props) {
 
@@ -27,12 +28,12 @@ export default function EditImagePlugin(props) {
 
   return (
     <div className="edit-image-plugin">
+    <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick}/>
       <div className="input-group">
-      <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick}/>
         <span className="input-group-text">Image</span>
         <Image
           className="form-control"
-          src={url}
+          src={url ? url : placeHolderImage}
           alt={url}
           width={0}
           height={0}

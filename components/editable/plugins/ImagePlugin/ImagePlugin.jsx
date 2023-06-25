@@ -1,9 +1,9 @@
 import EditableSection from "../../EditableSection";
 import getDocument from "@/api/firebase/database/getDocument";
 import Image from "next/image";
+import placeHolderImage from '@/assets/images/placeholder-image.png'
 
 export default async function ImagePlugin(props) {
-  console.log("here 2")
   const result = await getDocument("editableSections", props.id);
 
   const alt = result?.content.alt || result?.content.url;
@@ -18,7 +18,7 @@ export default async function ImagePlugin(props) {
       <EditableSection id={props.id} type={result?.type} content={content}
         display={
           <Image
-            src={result?.content.url}
+            src={result?.content.url ? result?.content.url : placeHolderImage}
             alt={alt}
             width={0}
             height={0}

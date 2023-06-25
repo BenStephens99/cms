@@ -21,8 +21,16 @@ export const EditModeProvider = ({ children }) => {
     setEditMode(!editMode);
   };
 
+  const closeEditMode = () => {
+    setEditMode(false);
+  }
+
+  const openEditMode = () => {
+    setEditMode(true);
+  }
+
   return (
-    <EditModeContext.Provider value={{ editMode, toggleEditMode }}>
+    <EditModeContext.Provider value={{ editMode, toggleEditMode, closeEditMode, openEditMode }}>
       {children}
     </EditModeContext.Provider>
   );

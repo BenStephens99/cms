@@ -1,5 +1,13 @@
 .edit-image-plugin {
+
+    width: 400px;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
     img {
+
         &:hover {
             cursor: pointer;
         }
