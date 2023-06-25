@@ -31,7 +31,10 @@ export default function FileManager(props) {
   };
 
   useEffect(() => {
-    fetchFoldersAndFiles();
+    if(props.openState) {
+      fetchFoldersAndFiles();
+      console.log('fetching folders and files');
+    }
   }, [currentDir, props.openState]);
 
   const handleFolderClick = async (folderName) => {

@@ -1,0 +1,24 @@
+header {
+    margin: 3vmin 0;
+
+    .content {
+        width: calc(100% - 3vmin);
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    nav {
+        margin-left: auto;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 20px;
+    }
+}

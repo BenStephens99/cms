@@ -1,5 +1,6 @@
 import EditableSection from "../../EditableSection";
 import getDocument from "@/api/firebase/database/getDocument";
+import './textPlugin.scss';
 
 export default async function TextPlugin(props) {
   const result = await getDocument("editableSections", props.id);
@@ -7,7 +8,7 @@ export default async function TextPlugin(props) {
     <div className="text-plugin">
       <EditableSection id={props.id} type={result?.type} content={result?.content}
         display={
-          <p>{result?.content.text}</p>
+          <>{result?.content.text}</>
         } />
     </div>
   );

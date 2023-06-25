@@ -76,7 +76,7 @@ export default function EditModal(props) {
       <div className="dialog edit-modal">
         <div className="dialog-header">
           <h4>Edit Section</h4>
-          <span className="close-button" onClick={closeModal}><X height={"2em"} width={"2em"} /></span>
+          <span className="close-button" onClick={closeModal}><X height={"35px"} width={"35px"} /></span>
         </div>
         <div className="dialog-body">
           {component}

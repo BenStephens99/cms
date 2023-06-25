@@ -6,6 +6,7 @@ import { PlusCircle, Pencil, Person, Folder } from "react-bootstrap-icons";
 import { EditModeContext } from '../context/EditContext'
 import { useContext, useState } from 'react';
 import FileManager from "../fileManager/FileManager";
+import Link from "next/link";
 
 export default function TopBar() {
 
@@ -28,12 +29,12 @@ export default function TopBar() {
             <>
             <div className="admin-section top-bar">
                 {/* <button className="btn icon btn-primary"><PlusCircle /> Add Section</button> */}
-                <button onClick={toggleEditMode} className={`btn icon ${editMode ? 'btn-primary': 'btn-secondary'}`}><Pencil />{editMode ? 'Edit Mode' : 'Edit Mode'}</button>
-                <button onClick={toggleFileManger} className={`btn icon ${fileManagerOpen ? 'btn-primary': 'btn-secondary'}`}><Folder />File Manager</button>
-                <button className="ms-auto btn icon btn-secondary"><Person />Admin Area</button>
+                <button onClick={toggleEditMode} className={`btn icon ${editMode ? 'btn-primary': 'btn-secondary'}`}><Pencil /><span className="btn-text">{editMode ? 'Edit Mode' : 'Edit Mode'}</span></button>
+                <button onClick={toggleFileManger} className={`btn icon ${fileManagerOpen ? 'btn-primary': 'btn-secondary'}`}><Folder /><span className="btn-text">File Manager</span></button>
+                <Link className="admin-btn" href={'/admin'}><button className="btn icon btn-secondary"><Person /><span className="btn-text">Admin Area</span></button></Link>
                 <SignOut />
             </div>
-            <FileManager openState={fileManagerOpen} close={closeFileManager}/>
+            <FileManager openState={fileManagerOpen} close={closeFileManager}/> 
             </>
         )   
     }

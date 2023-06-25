@@ -27,7 +27,7 @@ export default function SignOut () {
     }
 
     return (
-        <button className="btn icon btn-danger" onClick={handleEvent}><BoxArrowRight />Sign Out</button>
+        <button className="btn icon btn-danger" onClick={handleEvent}><BoxArrowRight /><span className="btn-text">Sign Out</span></button>
     )
 
 }

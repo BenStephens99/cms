@@ -6,8 +6,13 @@
     --darker-shadow: #0000007b;
 }
 
-h1, h2, h3, h4, h5, h6 {
-   margin: 0 !important;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 !important;
 }
 
 * {
@@ -23,6 +28,12 @@ body {
     background-color: var(--light-grey);
     max-width: 100vw !important;
     overflow-x: hidden;
+}
+
+main {
+    width: calc(100% - 3vmin);
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 form {
@@ -42,13 +53,13 @@ form {
         gap: 10px;
         justify-content: center;
 
-        > div {
+        >div {
             display: flex;
             flex-direction: column;
             gap: 5px;
-        }    
+        }
     }
-    
+
     input {
         padding: 5px;
         border: 1px solid var(--dark-grey);
@@ -56,9 +67,15 @@ form {
     }
 }
 
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
 button.icon {
     display: flex !important;
     align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 
@@ -107,6 +124,7 @@ dialog {
         .close-button {
             border-radius: 50%;
             transition: 0.2s;
+
             &:hover {
                 cursor: pointer;
                 background-color: rgba(133, 133, 133, 0.249);
@@ -153,65 +171,65 @@ dialog {
     justify-content: center;
     width: var(--uib-size);
     height: var(--uib-size);
-   }
-   
-   .newtons-cradle__dot {
+}
+
+.newtons-cradle__dot {
     position: relative;
     display: flex;
     align-items: center;
     height: 100%;
     width: 25%;
     transform-origin: center top;
-   }
-   
-   .newtons-cradle__dot::after {
+}
+
+.newtons-cradle__dot::after {
     content: '';
     display: block;
     width: 100%;
     height: 25%;
     border-radius: 50%;
     background-color: var(--uib-color);
-   }
-   
-   .newtons-cradle__dot:first-child {
+}
+
+.newtons-cradle__dot:first-child {
     animation: swing var(--uib-speed) linear infinite;
-   }
-   
-   .newtons-cradle__dot:last-child {
+}
+
+.newtons-cradle__dot:last-child {
     animation: swing2 var(--uib-speed) linear infinite;
-   }
-   
-   @keyframes swing {
+}
+
+@keyframes swing {
     0% {
-     transform: rotate(0deg);
-     animation-timing-function: ease-out;
+        transform: rotate(0deg);
+        animation-timing-function: ease-out;
     }
-   
+
     25% {
-     transform: rotate(70deg);
-     animation-timing-function: ease-in;
+        transform: rotate(70deg);
+        animation-timing-function: ease-in;
     }
-   
+
     50% {
-     transform: rotate(0deg);
-     animation-timing-function: linear;
+        transform: rotate(0deg);
+        animation-timing-function: linear;
     }
-   }
-   
-   @keyframes swing2 {
+}
+
+@keyframes swing2 {
     0% {
-     transform: rotate(0deg);
-     animation-timing-function: linear;
+        transform: rotate(0deg);
+        animation-timing-function: linear;
     }
-   
+
     50% {
-     transform: rotate(0deg);
-     animation-timing-function: ease-out;
+        transform: rotate(0deg);
+        animation-timing-function: ease-out;
     }
-   
+
     75% {
-     transform: rotate(-70deg);
-     animation-timing-function: ease-in;
+        transform: rotate(-70deg);
+        animation-timing-function: ease-in;
     }
-   }
-   
+}
+

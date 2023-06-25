@@ -31,8 +31,6 @@ export default function SignIn() {
             toast.success("Signed in")
             return router.push("/")
         }
-
-
     }
     return (
         <form onSubmit={handleForm}>

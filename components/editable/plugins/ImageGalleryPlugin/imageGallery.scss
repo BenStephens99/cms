@@ -1,9 +1,11 @@
 .image-gallery, .edit-image-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5vmin;
+    min-height: 20vh;
+    width: 100%;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 650px) {
         grid-template-columns: 1fr;
     }
 
@@ -15,7 +17,7 @@
 }
 
 .edit-image-gallery {
-    width: 600px;
+    width: 900px;
     max-width: 90vw;
 
     .edit-gallery-column {
@@ -31,8 +33,26 @@
 
         button {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            top: 5px;
+            right: 5px;
+        }
+
+        
+        .delete-image {
+            border: none;
+            background-color: #cc30408b;
+            color: #ffffff;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: #cc3040f6;
+            }
         }
 
         p {

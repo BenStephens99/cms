@@ -22,21 +22,28 @@ export default function EditableSection(props) {
     }
   }
 
-  const closeModal = (e) => { 
+  const closeModal = (e) => {
     openEditMode()
-      if (e) {
-        e.stopPropagation()
-      }
-      setModalOpen(false) 
+    if (e) {
+      e.stopPropagation()
+    }
+    setModalOpen(false)
   }
 
-  return (
-    <>
-      <EditModal id={props.id} type={props.type} modalOpen={modalOpen} content={structuredClone(props.content)} closeModal={closeModal}/>
-      <div className={`editable-section ${editMode ? 'editing' : ''}`} onClick={openModal}>
+  if (user) {
+    return (
+      <>
+        <EditModal id={props.id} type={props.type} modalOpen={modalOpen} content={structuredClone(props.content)} closeModal={closeModal} />
+        <div className={`editable-section ${editMode ? 'editing' : ''}`} onClick={openModal}>
+          {props.display}
+        </div>
+      </>
+    )
+  } else {
+    return (
+      <>
         {props.display}
-      </div>
-    </>
-
-  )
+      </>
+    )
+  }
 }

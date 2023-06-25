@@ -5,6 +5,7 @@ import Image from 'next/image'
 import getDocument from '@/api/firebase/database/getDocument'
 import { useState, useEffect } from 'react'
 import placeHolderImage from '@/assets/images/placeholder-image.png'
+import { X, PlusCircle } from 'react-bootstrap-icons'
 
 export default function EditImageGalleryPlugin(props) {
 
@@ -61,10 +62,10 @@ function EditGalleryColumn(props) {
       {props.images.map((img) => (
         <div key={img} className='thumb'>
           <ImageThumb id={img} />
-          <button onClick={() => deleteImage(img)} className='btn btn-danger'>Delete</button>
+          <button onClick={() => deleteImage(img)} className='delete-image'><X height={"1.5em"} width={"1.5em"}/></button>
         </div>
       ))}
-      <button onClick={() => addImage(props.col)} className='btn btn-primary add-image'>Add Image</button>
+      <button onClick={() => addImage(props.col)} className='btn icon btn-primary add-image'><PlusCircle />Add Image</button>
     </div>
   )
 }
