@@ -38,7 +38,7 @@ export default function EditImagePlugin(props) {
           height={0}
           sizes="100vw"
           style={{ width: '100px', height: 'auto', margin: 'auto' }}
-          onClick={() => setFileManagerOpen(true)}
+          onClick={(e) => setFileManagerOpen(e, true)}
         />
       </div>
 

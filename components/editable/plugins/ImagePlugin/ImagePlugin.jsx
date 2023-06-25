@@ -3,6 +3,7 @@ import getDocument from "@/api/firebase/database/getDocument";
 import Image from "next/image";
 
 export default async function ImagePlugin(props) {
+  console.log("here 2")
   const result = await getDocument("editableSections", props.id);
 
   const alt = result?.content.alt || result?.content.url;

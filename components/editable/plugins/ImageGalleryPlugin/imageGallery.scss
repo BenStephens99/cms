@@ -1,0 +1,13 @@
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50vmin);
+    justify-content: space-evenly;
+    gap: 50px;
+
+
+    .image-column {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+}
