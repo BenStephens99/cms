@@ -14,7 +14,6 @@ export default async function ImagePlugin(props) {
   }
 
   return (
-    <div className="image-plugin">
       <EditableSection id={props.id} type={result?.type} content={content}
         display={
           <Image
@@ -22,10 +21,9 @@ export default async function ImagePlugin(props) {
             alt={alt}
             width={0}
             height={0}
-            sizes="100vw"
+            sizes="300px"
             style={{ width: '100%', height: 'auto' }} 
           />
         } />
-    </div>
   );
 }

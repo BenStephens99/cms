@@ -1,12 +1,12 @@
-
 import ImageGalleryPlugin from '@/components/editable/plugins/ImageGalleryPlugin/ImageGalleryPlugin'
+import Link from 'next/link'
 
 export default function Home() {
 
   return (
     <>
       
-      <ImageGalleryPlugin id="gallery" />
+      <Link href="/gallery/gallery">Gallery</Link> 
 
     </>
   )

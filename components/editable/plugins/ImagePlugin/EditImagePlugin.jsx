@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useState } from "react"
 import FileManager from "@/components/fileManager/FileManager"
 import getFileUrl from "@/api/firebase/database/getFileUrl"
-import './editImagePlugin.scss'
+import './imagePlugin.scss'
 import placeHolderImage from '@/assets/images/placeholder-image.png'
 
 export default function EditImagePlugin(props) {
@@ -37,7 +37,7 @@ export default function EditImagePlugin(props) {
           alt={url}
           width={0}
           height={0}
-          sizes="100vw"
+          sizes="400px"
           style={{ width: '100px', height: 'auto', margin: 'auto' }}
           onClick={(e) => setFileManagerOpen(e, true)}
         />

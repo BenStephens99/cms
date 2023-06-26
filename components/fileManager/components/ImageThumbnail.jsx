@@ -10,7 +10,7 @@ export default function ImageThumbnail(props) {
     return (
         <div onClick={handleClick} className="image thumbnail">
             <div className="image-container">
-                <Image src={props.url} alt={props.name} fill={true} style={{ objectFit: "contain" }} />
+                <Image src={props.url} alt={props.name} fill={true} sizes="100px" style={{ objectFit: "contain" }} />
             </div>
 
             <ThubnailText text={props.name} />

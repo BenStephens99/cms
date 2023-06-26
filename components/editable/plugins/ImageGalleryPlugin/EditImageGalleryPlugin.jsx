@@ -62,7 +62,7 @@ function EditGalleryColumn(props) {
       {props.images.map((img) => (
         <div key={img} className='thumb'>
           <ImageThumb id={img} />
-          <button onClick={() => deleteImage(img)} className='delete-image'><X height={"1.5em"} width={"1.5em"}/></button>
+          <button onClick={() => deleteImage(img)} className='delete-image'><X height={"1.5em"} width={"1.5em"} /></button>
         </div>
       ))}
       <button onClick={() => addImage(props.col)} className='btn icon btn-primary add-image'><PlusCircle />Add Image</button>
@@ -83,6 +83,7 @@ function ImageThumb(props) {
   }, [props.id]);
 
   return (
-    <Image src={result?.content?.url ? result.content.url : placeHolderImage} alt={result?.content?.alt} width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} />
+    <Image src={result?.content?.url ? result.content.url : placeHolderImage}
+      alt={result?.content?.alt} width={0} height={0} sizes="200px" style={{ width: '100%', height: 'auto' }} />
   );
 }

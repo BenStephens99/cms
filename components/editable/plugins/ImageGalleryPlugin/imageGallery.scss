@@ -2,8 +2,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5vmin;
-    min-height: 20vh;
     width: 100%;
+
+    .editable-section {
+        min-height: 20vh;
+    }
 
     @media screen and (max-width: 650px) {
         grid-template-columns: 1fr;
