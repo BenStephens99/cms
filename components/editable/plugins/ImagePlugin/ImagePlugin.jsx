@@ -16,14 +16,16 @@ export default async function ImagePlugin(props) {
   return (
       <EditableSection id={props.id} type={result?.type} content={content}
         display={
-          <Image
-            src={result?.content.url ? result?.content.url : placeHolderImage}
-            alt={alt}
-            width={0}
-            height={0}
-            sizes="300px"
-            style={{ width: '100%', height: 'auto' }} 
-          />
+          <a href={result?.content?.url} target="_blank" rel="noreferrer" style={{ cursor: 'pointer' }}>
+            <Image
+              src={result?.content.url ? result?.content.url : placeHolderImage}
+              alt={alt}
+              width={0}
+              height={0}
+              sizes="300px"
+              style={{ width: '100%', height: 'auto' }} 
+            />
+          </a>
         } />
   );
 }

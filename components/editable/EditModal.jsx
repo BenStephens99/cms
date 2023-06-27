@@ -9,13 +9,14 @@ import "./editModal.scss"
 import { toast } from "react-hot-toast"
 import EditImageGalleryPlugin from "./plugins/ImageGalleryPlugin/EditImageGalleryPlugin"
 import deleteDocument from "@/api/firebase/database/deleteDocument"
+import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
 
 export default function EditModal(props) {
   let component = null
 
   const router = useRouter()
 
-  const [content, setContent] = useState({...props.content})
+  const [content, setContent] = useState({ ...props.content })
 
   const [newDocs, setNewDocs] = useState([])
 
@@ -42,7 +43,10 @@ export default function EditModal(props) {
       component = <EditImagePlugin id={props.id} content={content} setContent={setContent} />
       break;
     case "gallery-plugin":
-      component = <EditImageGalleryPlugin id={props.id} content={content} setContent={setContent} addNewDoc={addNewDoc} deleteDoc={deleteDoc}/>
+      component = <EditImageGalleryPlugin id={props.id} content={content} setContent={setContent} addNewDoc={addNewDoc} deleteDoc={deleteDoc} />
+      break;
+    case "gallery-menu":
+      component = <EditGalleryMenu id={props.id} content={content} setContent={setContent} addNewDoc={addNewDoc} deleteDoc={deleteDoc} />
       break;
     default:
       component = <p>Unknown type</p>
