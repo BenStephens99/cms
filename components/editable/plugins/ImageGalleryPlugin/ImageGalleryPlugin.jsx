@@ -4,7 +4,7 @@ import ImagePlugin from "../ImagePlugin/ImagePlugin";
 import './imageGallery.scss'
 
 export default async function ImageGalleryPlugin(props) {
-  const result = await getDocument("editableSections", props.id);
+  const result = await getDocument("gallery", props.id);
 
   const images = result.content.images
 

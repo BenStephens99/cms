@@ -1,0 +1,34 @@
+.pages-editor {
+    padding-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 100%;
+
+    .page {
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid var(--light-grey);
+        border-radius: 5px;
+        cursor: pointer;
+
+        &.selected {
+            background-color: var(--light-grey);
+        }
+    }
+}
+
+.add-new-page {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+
+    button {
+        white-space: nowrap;
+    }
+}

@@ -13,6 +13,8 @@ import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
 
 export default function EditModal(props) {
   let component = null
+  let collection='editableSections'
+
 
   const router = useRouter()
 
@@ -43,6 +45,7 @@ export default function EditModal(props) {
       component = <EditImagePlugin id={props.id} content={content} setContent={setContent} />
       break;
     case "gallery-plugin":
+      collection='gallery'
       component = <EditImageGalleryPlugin id={props.id} content={content} setContent={setContent} addNewDoc={addNewDoc} deleteDoc={deleteDoc} />
       break;
     case "gallery-menu":
@@ -53,10 +56,11 @@ export default function EditModal(props) {
   }
 
   const updatePlugin = async (e) => {
-    await updateDocument("editableSections", props.id, content)
+    console.log(collection)
+    await updateDocument(collection, props.id, content)
     setNewDocs([])
     for (let doc of deletedDocs) {
-      await deleteDocument('editableSections', doc)
+      await deleteDocument(collection, doc)
     }
     setDeletedDocs([])
     router.refresh()
@@ -70,7 +74,7 @@ export default function EditModal(props) {
     props.closeModal()
 
     for (let doc of newDocs) {
-      await deleteDocument('editableSections', doc)
+      await deleteDocument(collection, doc)
     }
     setNewDocs([])
   }

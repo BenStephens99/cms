@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 export default async function GalleryMenu(props) {
-  const result = await getDocument("menus", props.id)
+  const result = await getDocument("editableSections", props.id)
 
   return (
     <EditableSection 
