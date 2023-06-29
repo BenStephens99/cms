@@ -8,6 +8,8 @@ import setData from '@/api/firebase/database/setData';
 import { PlusLg } from 'react-bootstrap-icons';
 import { toast } from 'react-hot-toast';
 import { CaretRightFill } from 'react-bootstrap-icons';
+import getDocument from '@/api/firebase/database/getDocument';
+import { getDoc } from 'firebase/firestore';
 
 export default function PagesEditor(props) {
   const [pages, setPages] = useState([]);
@@ -16,7 +18,7 @@ export default function PagesEditor(props) {
 
   const [showPageEditor, setShowPageEditor] = useState(false);
 
-  const togglePageEditor = () => {  
+  const togglePageEditor = () => {
     setShowPageEditor(!showPageEditor);
   }
 
@@ -28,10 +30,30 @@ export default function PagesEditor(props) {
   useEffect(() => {
     fetchPageContent();
   }, [props.id]);
-  
+
   const deletePage = async (id, page) => {
     const confirmed = confirm(`Are you sure you want to delete ${page}?`);
+
     if (confirmed) {
+
+      switch (id) {
+
+        case 'gallery':
+          const gallery = await getDocument(id, page);
+          const images = gallery.content.images;
+
+          for (const key in images) {
+            for (const image of images[key]) {
+              deleteDocument('editableSections', image);
+            }
+          }
+          break;
+
+        default:
+          console.log("Unknown page type")
+          break;
+      }
+
       await deleteDocument(id, page);
       fetchPageContent();
     }

@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <div className="content">
-        <h2 className="title"><Link href={'/'}><TextPlugin id="header-text" /></Link></h2>
+        <h2 className="title"><TextPlugin id="header-text" /></h2>
         <nav>
           <ul>
             <li>About</li>

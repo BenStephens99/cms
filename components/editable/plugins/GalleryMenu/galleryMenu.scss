@@ -1,4 +1,18 @@
 .edit-gallery-menu {
-    width: 800px;
     max-width: 95vw;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.place-holder {
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

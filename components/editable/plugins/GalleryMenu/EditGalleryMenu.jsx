@@ -6,6 +6,7 @@ import './galleryMenu.scss'
 import { useState } from "react"
 import FileManager from "@/components/fileManager/FileManager"
 import getFileUrl from "@/api/firebase/database/getFileUrl"
+import { PlusLg } from "react-bootstrap-icons"
 
 export default function EditGalleryMenu(props) {
 
@@ -37,6 +38,15 @@ export default function EditGalleryMenu(props) {
     setFileManagerOpen(true)
   }
 
+  const addItem = () => {
+    items.push({
+      image: '',
+      url: '',
+      text: '',
+    })
+
+    updateContent()
+  }
 
   return (
     <>
@@ -44,8 +54,9 @@ export default function EditGalleryMenu(props) {
       <div className="edit-gallery-menu">
       <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick}/>
         {items.map((item) => (
-          <Image src={item.image} width={200} height={200} alt={item.image} onClick={selectImage}/>
+          <Image src={item.image} width={180} height={180} alt={item.image} onClick={selectImage}/>
         ))}
+        <div className="place-holder" onClick={addItem}><PlusLg height={'3em'} width={'3em'}/></div>
       </div>
     </>
   )
