@@ -14,15 +14,15 @@
 
     .item {
         cursor: pointer;
-        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .title {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             opacity: 0;
             color: white;
+            transition: 0.3s;
             z-index: 2;
 
             &:hover ~ img {
@@ -41,6 +41,7 @@
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
+        transition: 0.3s;
 
         &:hover {
             filter: brightness(40%);
@@ -66,6 +67,10 @@
             position: absolute;
             top: 5px;
             right: 5px;
+        }
+
+        img {
+            cursor: pointer;
         }
 
         .inputs {
