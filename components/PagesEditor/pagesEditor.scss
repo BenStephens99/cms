@@ -1,7 +1,9 @@
 .page-editor-header {
+    width: 100%;
     padding: 10px 20px;
     background-color: var(--light-grey);
     cursor: pointer;
+    box-sizing: border-box;
   
     display: flex;
     align-items: center;
@@ -23,6 +25,7 @@
 
 .pages-editor {
     padding: 10px;
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;

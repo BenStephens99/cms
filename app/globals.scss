@@ -158,6 +158,26 @@ dialog {
     }
 }
 
+.delete-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background-color: #cc30408b;
+    color: #ffffff;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: #cc3040f6;
+    }
+}
+
 .newtons-cradle {
     --uib-size: 50px;
     --uib-speed: 1.2s;

@@ -7,6 +7,7 @@ import { useState } from "react"
 import FileManager from "@/components/fileManager/FileManager"
 import getFileUrl from "@/api/firebase/database/getFileUrl"
 import { PlusLg } from "react-bootstrap-icons"
+import { X } from "react-bootstrap-icons"
 
 export default function EditGalleryMenu(props) {
 
@@ -18,9 +19,14 @@ export default function EditGalleryMenu(props) {
 
   const [selectedImage, setSelectedImage] = useState('')
 
+  const [selectedItem, setSelectedItem] = useState(0)
+
   const onFileClick = async (path) => {
-   const url = await getFileUrl(path)
-    setSelectedImage(url)
+    const url = await getFileUrl(path)
+    selectedItem.image = url
+    setFileManagerOpen(false)
+    setSelectedItem(null)
+    updateContent()
   }
 
   const updateContent = () => {
@@ -32,10 +38,12 @@ export default function EditGalleryMenu(props) {
 
   const closeFileManager = () => {
     setFileManagerOpen(false)
+    setSelectedItem(null)
   }
 
-  const selectImage = () => {
+  const selectImage = (index) => {
     setFileManagerOpen(true)
+    setSelectedItem(items[index])
   }
 
   const addItem = () => {
@@ -48,15 +56,32 @@ export default function EditGalleryMenu(props) {
     updateContent()
   }
 
+  const removeItem = (index) => {
+    items.splice(index, 1)
+    updateContent()
+  }
+
+  const updateText = (index, text) => {
+    items[index].text = text
+    updateContent()
+  }
+
   return (
     <>
-      <PagesEditor id='gallery' setSelectedUrl={setSelectedUrl} selectedUrl={selectedUrl}/>
+      <PagesEditor id='gallery' setSelectedUrl={setSelectedUrl} selectedUrl={selectedUrl} />
       <div className="edit-gallery-menu">
-      <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick}/>
-        {items.map((item) => (
-          <Image src={item.image} width={180} height={180} alt={item.image} onClick={selectImage}/>
+        <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick} />
+        {items.map((item, index) => (
+          <div className="item" key={index}>
+            <button onClick={() => removeItem(index)} className='delete-image'><X height={"1.5em"} width={"1.5em"} /></button>
+            <div className="inputs">
+              <input type="text" placeholder="Text" class="form-control" value={item.text} onChange={(e) => updateText(index, e.target.value)} />
+              <div className="url-selector form-control">{item.url}URL</div> 
+            </div>
+            <Image src={item.image} width={250} height={250} alt={item.image} style={{ objectFit: "cover", objectPosition: "100% center" }}  onClick={() => selectImage(index)} />
+          </div>
         ))}
-        <div className="place-holder" onClick={addItem}><PlusLg height={'3em'} width={'3em'}/></div>
+        <div className="place-holder" onClick={addItem}><PlusLg height={'3em'} width={'3em'} /></div>
       </div>
     </>
   )

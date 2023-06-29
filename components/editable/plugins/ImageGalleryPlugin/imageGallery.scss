@@ -32,16 +32,11 @@
     .thumb {
         max-width: 300px;
         position: relative;
-
-
-        button {
+        
+        .delete-image {
             position: absolute;
             top: 5px;
             right: 5px;
-        }
-
-        
-        .delete-image {
             border: none;
             background-color: #cc30408b;
             color: #ffffff;
