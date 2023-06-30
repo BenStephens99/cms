@@ -15,14 +15,16 @@ export default async function GalleryMenu(props) {
         <div className="gallery-menu">
           {result?.content?.items?.map((item) => (
             <div className="item">
-              <h2 className="title">{item.text}</h2>
-              <Image
-                src={item.image}
-                alt={item.url}
-                width={0}
-                height={0}
-                sizes="350px"
-              />
+              <Link href={item.url}>
+                <h2 className="title">{item.text}</h2>
+                <Image
+                  src={item.image}
+                  alt={item.url}
+                  width={0}
+                  height={0}
+                  sizes="350px"
+                />
+              </Link>
             </div>
           ))}
         </div>

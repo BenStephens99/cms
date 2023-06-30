@@ -30,6 +30,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     width: 100%;
+    overflow-x: scroll;
     border-left: 1px solid var(--light-grey);
     border-right: 1px solid var(--light-grey);
     border-bottom: 1px solid var(--light-grey);
@@ -72,6 +73,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 100%;
 
     input {
         border: none;

@@ -1,3 +1,5 @@
+export const revalidate = 600 
+
 import EditableSection from "../../EditableSection";
 import getDocument from "@/api/firebase/database/getDocument";
 import Image from "next/image";

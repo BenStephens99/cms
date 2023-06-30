@@ -31,7 +31,7 @@ body {
 }
 
 main {
-    width: calc(100% - 3vmin);
+    width: calc(100% - 5vmin);
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -135,7 +135,7 @@ dialog {
     .dialog-body {
         border-bottom: 1px solid var(--light-grey);
         padding-bottom: 20px;
-        max-height: calc(80vh - 150px);
+        max-height: calc(90vh - 150px);
         overflow-y: auto;
 
         textarea {
@@ -155,6 +155,17 @@ dialog {
         justify-content: flex-end;
         gap: 10px;
         min-height: 38px;
+
+        @media (max-width: 650px) {
+            .btn-text {
+                display: none;
+            }
+
+            button {
+                height: 40px;
+            }
+        }
+        
     }
 }
 

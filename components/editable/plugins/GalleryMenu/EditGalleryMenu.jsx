@@ -17,8 +17,6 @@ export default function EditGalleryMenu(props) {
 
   const [fileManagerOpen, setFileManagerOpen] = useState(false)
 
-  const [selectedImage, setSelectedImage] = useState('')
-
   const [selectedItem, setSelectedItem] = useState(0)
 
   const onFileClick = async (path) => {
@@ -45,6 +43,17 @@ export default function EditGalleryMenu(props) {
     setFileManagerOpen(true)
     setSelectedItem(items[index])
   }
+
+  const selectUrl = (index) => {
+    setSelectedItem(items[index])
+    if (selectedUrl) {
+      items[index].url = selectedUrl
+      updateContent()
+      setSelectedItem(null)
+      setSelectedUrl(null)
+    }
+  }
+
 
   const addItem = () => {
     items.push({
@@ -76,7 +85,7 @@ export default function EditGalleryMenu(props) {
             <button onClick={() => removeItem(index)} className='delete-image'><X height={"1.5em"} width={"1.5em"} /></button>
             <div className="inputs">
               <input type="text" placeholder="Text" class="form-control" value={item.text} onChange={(e) => updateText(index, e.target.value)} />
-              <div className="url-selector form-control">{item.url}URL</div> 
+              <div className="url-selector form-control" onClick={() => selectUrl(index)}>{item.url}URL</div> 
             </div>
             <Image src={item.image} width={250} height={250} alt={item.image} style={{ objectFit: "cover", objectPosition: "100% center" }}  onClick={() => selectImage(index)} />
           </div>

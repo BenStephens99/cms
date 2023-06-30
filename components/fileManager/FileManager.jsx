@@ -93,9 +93,9 @@ export default function FileManager(props) {
           <FileAndFolders deleteMode={deleteMode} dir={currentDir} images={images} files={files} folders={folders} onFileClick={handleFileClick} onFolderClick={handleFolderClick} onBreadcrumClick={handleBreadcrumClick} />
         </div>
         <div className="dialog-footer">
-          <button className={`btn icon me-auto ${deleteMode ? 'btn-danger' : 'btn-secondary'}`} onClick={toggleDeleteMode}><Trash />Delete Mode</button>
-          <button className="btn icon btn-primary" onClick={toggleFolderEditor}><FolderPlus />New Folder</button>
-          <button className="btn icon btn-primary" onClick={() => handleFileUpload()}><Upload />Upload File</button>
+          <button className={`btn icon me-auto ${deleteMode ? 'btn-danger' : 'btn-secondary'}`} onClick={toggleDeleteMode}><Trash /><span className='btn-text'>Delete Mode</span></button>
+          <button className="btn icon btn-primary" onClick={toggleFolderEditor}><FolderPlus /><span className='btn-text'>New Folder</span></button>
+          <button className="btn icon btn-primary" onClick={() => handleFileUpload()}><Upload /><span className='btn-text'>Upload File</span></button>
           <button onClick={props.close} className="btn btn-secondary">Close</button>
         </div>
       </div>
