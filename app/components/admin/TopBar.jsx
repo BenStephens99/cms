@@ -2,7 +2,7 @@
 import SignOut from "../auth/SignOut";
 import { useAuthContext } from "../context/AuthContext"
 import './admin.scss'
-import { PlusCircle, Pencil, Person, Folder } from "react-bootstrap-icons";
+import { Pencil, Person, Folder } from "react-bootstrap-icons";
 import { EditModeContext } from '../context/EditContext'
 import { useContext, useState } from 'react';
 import FileManager from "../fileManager/FileManager";

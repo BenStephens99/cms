@@ -1,5 +1,5 @@
 import EditableSection from "../../EditableSection";
-import getDocument from "@/api/firebase/database/getDocument";
+import getDocument from "@/app/api/firebase/database/getDocument";
 import './textPlugin.scss';
 
 export default async function TextPlugin(props) {

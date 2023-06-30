@@ -2,7 +2,7 @@
 import React from "react";
 import { useRouter } from 'next/navigation'
 import { signOut, getAuth } from "firebase/auth";
-import firebase_app from "@/api/firebase/config";
+import firebase_app from "@/app/api/firebase/config";
 import toast from "react-hot-toast";
 import { BoxArrowRight } from "react-bootstrap-icons";
 

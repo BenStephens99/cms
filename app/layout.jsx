@@ -1,11 +1,11 @@
-import { AuthContextProvider } from '../components/context/AuthContext'
+import { AuthContextProvider } from './components/context/AuthContext'
 import './globals.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
-import TopBar from '../components/admin/TopBar'
-import { EditModeProvider } from '@/components/context/EditContext'
-import Header from '@/components/editable/Header/Header'
+import TopBar from './components/admin/TopBar'
+import { EditModeProvider } from './components/context/EditContext'
+import Header from './components/editable/Header/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 

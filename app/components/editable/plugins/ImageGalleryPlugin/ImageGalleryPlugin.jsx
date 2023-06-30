@@ -1,4 +1,5 @@
-import getDocument from "@/api/firebase/database/getDocument";
+
+import getDocument from "@/app/api/firebase/database/getDocument";
 import EditableSection from "../../EditableSection";
 import ImagePlugin from "../ImagePlugin/ImagePlugin";
 import './imageGallery.scss'

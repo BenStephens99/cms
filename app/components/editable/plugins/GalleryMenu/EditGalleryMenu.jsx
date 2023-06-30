@@ -1,11 +1,10 @@
 'use client'
-import Link from "next/link"
 import Image from "next/image"
 import PagesEditor from "../../../PagesEditor/PagesEditor"
 import './galleryMenu.scss'
 import { useState } from "react"
-import FileManager from "@/components/fileManager/FileManager"
-import getFileUrl from "@/api/firebase/database/getFileUrl"
+import FileManager from "@/app/components/fileManager/FileManager"
+import getFileUrl from "@/app/api/firebase/database/getFileUrl"
 import { PlusLg } from "react-bootstrap-icons"
 import { X } from "react-bootstrap-icons"
 

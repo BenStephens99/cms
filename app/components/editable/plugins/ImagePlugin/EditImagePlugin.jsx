@@ -1,10 +1,10 @@
 'use client'
 import Image from "next/image"
 import { useState } from "react"
-import FileManager from "@/components/fileManager/FileManager"
-import getFileUrl from "@/api/firebase/database/getFileUrl"
+import FileManager from "@/app/components/fileManager/FileManager"
+import getFileUrl from "@/app/api/firebase/database/getFileUrl"
 import './imagePlugin.scss'
-import placeHolderImage from '@/assets/images/placeholder-image.png'
+import placeHolderImage from '@/app/assets/images/placeholder-image.png'
 
 export default function EditImagePlugin(props) {
 

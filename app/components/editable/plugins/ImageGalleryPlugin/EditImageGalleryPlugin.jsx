@@ -1,10 +1,10 @@
 'use client'
 import './imageGallery.scss'
-import addData from '@/api/firebase/database/addData'
+import addData from '@/app/api/firebase/database/addData'
 import Image from 'next/image'
-import getDocument from '@/api/firebase/database/getDocument'
+import getDocument from '@/app/api/firebase/database/getDocument'
 import { useState, useEffect } from 'react'
-import placeHolderImage from '@/assets/images/placeholder-image.png'
+import placeHolderImage from '@/app/assets/images/placeholder-image.png'
 import { X, PlusCircle } from 'react-bootstrap-icons'
 
 export default function EditImageGalleryPlugin(props) {

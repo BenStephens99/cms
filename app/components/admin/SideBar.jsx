@@ -1,5 +1,5 @@
 'use client'
-import { useAuthContext } from "../context/AuthContext"
+import { useAuthContext } from '../context/AuthContext';
 import './admin.scss'
 
 export default function SideBar() {

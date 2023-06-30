@@ -1,7 +1,7 @@
 'use client'
-import SignOut from "../../../components/auth/SignOut";
-import SignIn from "../../../components/auth/SignIn";
-import { useAuthContext } from "../../../components/context/AuthContext";
+import SignOut from "@/app/components/auth/SignOut";
+import SignIn from "@/app/components/auth/SignIn";
+import { useAuthContext } from "@/app/components/context/AuthContext";
 import './login.scss'
 
 export default function login() {

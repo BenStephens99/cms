@@ -1,9 +1,8 @@
-export const revalidate = 600 
 
+import getDocument from "@/app/api/firebase/database/getDocument";
 import EditableSection from "../../EditableSection";
-import getDocument from "@/api/firebase/database/getDocument";
 import Image from "next/image";
-import placeHolderImage from '@/assets/images/placeholder-image.png'
+import placeHolderImage from "@/app/assets/images/placeholder-image.png";
 
 export default async function ImagePlugin(props) {
   const result = await getDocument("editableSections", props.id);
@@ -24,7 +23,7 @@ export default async function ImagePlugin(props) {
               alt={alt}
               width={0}
               height={0}
-              sizes="300px"
+              sizes="500px"
               style={{ width: '100%', height: 'auto' }} 
             />
           </a>

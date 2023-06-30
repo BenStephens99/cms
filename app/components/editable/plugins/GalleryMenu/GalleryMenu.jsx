@@ -1,5 +1,5 @@
 import EditableSection from "../../EditableSection"
-import getDocument from "@/api/firebase/database/getDocument"
+import getDocument from "@/app/api/firebase/database/getDocument"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -22,7 +22,7 @@ export default async function GalleryMenu(props) {
                   alt={item.url}
                   width={0}
                   height={0}
-                  sizes="350px"
+                  sizes="400px"
                 />
               </Link>
             </div>

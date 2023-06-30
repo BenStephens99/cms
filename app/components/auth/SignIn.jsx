@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import signIn from "@/api/firebase/auth/signIn";
+import signIn from "@/app/api/firebase/auth/signIn";
 import { useRouter } from 'next/navigation'
 import toast from "react-hot-toast";
 

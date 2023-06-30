@@ -1,4 +1,4 @@
-import ImageGalleryPlugin from "@/components/editable/plugins/ImageGalleryPlugin/ImageGalleryPlugin"
+import ImageGalleryPlugin from "@/app/components/editable/plugins/ImageGalleryPlugin/ImageGalleryPlugin"
 
 export default async function Page({params}) {
   return (

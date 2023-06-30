@@ -2,14 +2,13 @@
 
 import './pagesEditor.scss'
 import { useEffect, useState } from "react";
-import getAllDocumentNames from "@/api/firebase/database/getAllDocumentNames";
-import deleteDocument from '@/api/firebase/database/deleteDocument';
-import setData from '@/api/firebase/database/setData';
+import getAllDocumentNames from '@/app/api/firebase/database/getAllDocumentNames';
+import deleteDocument from '@/app/api/firebase/database/deleteDocument';
+import setData from '@/app/api/firebase/database/setData';
 import { PlusLg } from 'react-bootstrap-icons';
 import { toast } from 'react-hot-toast';
 import { CaretRightFill } from 'react-bootstrap-icons';
-import getDocument from '@/api/firebase/database/getDocument';
-import { getDoc } from 'firebase/firestore';
+import getDocument from '@/app/api/firebase/database/getDocument';
 
 export default function PagesEditor(props) {
   const [pages, setPages] = useState([]);

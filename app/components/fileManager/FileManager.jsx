@@ -3,11 +3,11 @@ import FileAndFolders from './components/FileAndFolders';
 import './fileManager.scss'
 import { X, FolderPlus, Upload, Trash } from "react-bootstrap-icons";
 import { useState } from 'react';
-import uploadImage from '@/api/firebase/database/uploadImage';
-import createFolder from '@/api/firebase/database/createFolder';
-import { deleteFolder } from '@/api/firebase/database/deleteFolder';
-import { deleteFile } from '@/api/firebase/database/deleteFile';
-import getAllFoldersAndFiles from '@/api/firebase/database/getAllFoldersAndFiles';
+import uploadImage from '@/app/api/firebase/database/uploadImage';
+import createFolder from '@/app/api/firebase/database/createFolder';
+import { deleteFolder } from '@/app/api/firebase/database/deleteFolder';
+import { deleteFile } from '@/app/api/firebase/database/deleteFile';
+import getAllFoldersAndFiles from '@/app/api/firebase/database/getAllFoldersAndFiles';
 import { useEffect } from 'react';
 import NewFolderEditor from './components/NewFolerEditor';
 
