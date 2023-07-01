@@ -1,3 +1,5 @@
+export const revalidate = 60 * 60;
+
 import ImageGalleryPlugin from "@/app/components/editable/plugins/ImageGalleryPlugin/ImageGalleryPlugin"
 
 export default async function Page({params}) {
