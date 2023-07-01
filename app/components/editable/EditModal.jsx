@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast"
 import EditImageGalleryPlugin from "./plugins/ImageGalleryPlugin/EditImageGalleryPlugin"
 import deleteDocument from "@/app/api/firebase/database/deleteDocument"
 import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
-
+import EditLinkPlugin from "./plugins/LinkPlugin/EditLinkPlugin"
 export default function EditModal(props) {
   let component = null
   let collection='editableSections'
@@ -51,6 +51,10 @@ export default function EditModal(props) {
     case "gallery-menu":
       component = <EditGalleryMenu id={props.id} content={content} setContent={setContent} addNewDoc={addNewDoc} deleteDoc={deleteDoc} />
       break;
+    case "link-plugin":
+      component = <EditLinkPlugin id={props.id} content={content} setContent={setContent} />
+    break;
+
     default:
       component = <p>Unknown type</p>
   }
