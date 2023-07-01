@@ -1,4 +1,4 @@
-
+export const revalidate = 60 * 60;
 import getDocument from "@/app/api/firebase/database/getDocument";
 import EditableSection from "../../EditableSection";
 import ImagePlugin from "../ImagePlugin/ImagePlugin";
