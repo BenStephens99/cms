@@ -11,6 +11,7 @@ import EditImageGalleryPlugin from "./plugins/ImageGalleryPlugin/EditImageGaller
 import deleteDocument from "@/app/api/firebase/database/deleteDocument"
 import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
 import EditLinkPlugin from "./plugins/LinkPlugin/EditLinkPlugin"
+import { revalidatePath } from "next/cache"
 export default function EditModal(props) {
   let component = null
   let collection='editableSections'
@@ -60,13 +61,13 @@ export default function EditModal(props) {
   }
 
   const updatePlugin = async (e) => {
-    console.log(collection)
     await updateDocument(collection, props.id, content)
     setNewDocs([])
     for (let doc of deletedDocs) {
       await deleteDocument(collection, doc)
     }
     setDeletedDocs([])
+    revalidatePath(router.asPath)
     router.refresh()
     props.closeModal()
     toast.success("Plugin updated")
