@@ -1,4 +1,4 @@
-export const revalidate = 5
+export const revalidate = 0
 
 import GalleryMenu from "./components/editable/plugins/GalleryMenu/GalleryMenu"
 
