@@ -1,3 +1,4 @@
+export const revalidate = 100000
 
 import getDocument from "@/app/api/firebase/database/getDocument";
 import EditableSection from "../../EditableSection";
