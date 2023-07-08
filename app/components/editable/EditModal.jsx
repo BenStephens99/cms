@@ -67,7 +67,6 @@ export default function EditModal(props) {
       await deleteDocument(collection, doc)
     }
     setDeletedDocs([])
-    revalidatePath(router.asPath)
     router.refresh()
     props.closeModal()
     toast.success("Plugin updated")
