@@ -14,6 +14,5 @@ export default async function updateDocument(collection, id, content) {
   } catch (e) {
     error = e;
   }
-
   return { result, error };
 }

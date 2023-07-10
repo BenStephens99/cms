@@ -83,7 +83,7 @@ export default function EditGalleryMenu(props) {
           <div className="item" key={index}>
             <button onClick={() => removeItem(index)} className='delete-image'><X height={"1.5em"} width={"1.5em"} /></button>
             <div className="inputs">
-              <input type="text" placeholder="Text" class="form-control" value={item.text} onChange={(e) => updateText(index, e.target.value)} />
+              <input type="text" placeholder="Text" className="form-control" value={item.text} onChange={(e) => updateText(index, e.target.value)} />
               <div className="url-selector form-control" onClick={() => selectUrl(index)}>{item.url}URL</div> 
             </div>
             <Image src={item.image} width={250} height={250} alt={item.image} style={{ objectFit: "cover", objectPosition: "100% center" }}  onClick={() => selectImage(index)} />

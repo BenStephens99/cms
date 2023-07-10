@@ -32,7 +32,7 @@ export default function EditableSection(props) {
   if (user) {
     return (
       <>
-        <EditModal id={props.id} type={props.type} modalOpen={modalOpen} content={structuredClone(props.content)} closeModal={closeModal} />
+        <EditModal id={props.id} type={props.type} modalOpen={modalOpen} content={structuredClone(props.content)} closeModal={closeModal}/>
         <div className={`editable-section ${editMode ? 'editing' : ''}`} onClick={openModal}>
           {props.display}
         </div>

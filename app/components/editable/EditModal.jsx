@@ -11,11 +11,11 @@ import EditImageGalleryPlugin from "./plugins/ImageGalleryPlugin/EditImageGaller
 import deleteDocument from "@/app/api/firebase/database/deleteDocument"
 import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
 import EditLinkPlugin from "./plugins/LinkPlugin/EditLinkPlugin"
-import { revalidatePath } from "next/cache"
+
+
 export default function EditModal(props) {
   let component = null
-  let collection='editableSections'
-
+  let collection = 'editableSections'
 
   const router = useRouter()
 
@@ -46,7 +46,7 @@ export default function EditModal(props) {
       component = <EditImagePlugin id={props.id} content={content} setContent={setContent} />
       break;
     case "gallery-plugin":
-      collection='gallery'
+      collection = 'gallery'
       component = <EditImageGalleryPlugin id={props.id} content={content} setContent={setContent} addNewDoc={addNewDoc} deleteDoc={deleteDoc} />
       break;
     case "gallery-menu":
@@ -54,7 +54,7 @@ export default function EditModal(props) {
       break;
     case "link-plugin":
       component = <EditLinkPlugin id={props.id} content={content} setContent={setContent} />
-    break;
+      break;
 
     default:
       component = <p>Unknown type</p>
@@ -67,7 +67,7 @@ export default function EditModal(props) {
       await deleteDocument(collection, doc)
     }
     setDeletedDocs([])
-    router.refresh()
+    await fetch("/api/revalidate")
     props.closeModal()
     toast.success("Plugin updated")
   }
