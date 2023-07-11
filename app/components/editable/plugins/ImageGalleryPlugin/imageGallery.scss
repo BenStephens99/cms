@@ -15,18 +15,30 @@
     .image-column {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 2.5vmin;
     }
 }
 
 .edit-image-gallery {
     width: 900px;
-    max-width: 90vw;
+    max-width: 100%;
+
+    @media screen and (max-width: 650px) {
+        gap: 30px;
+    }
 
     .edit-gallery-column {
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        @media screen and (max-width: 650px) {
+            padding: 20px 0;
+            align-items: center;
+            border: 1px solid var(--light-grey);
+            border-radius: 5px;
+        }
+
     }
 
     .thumb {

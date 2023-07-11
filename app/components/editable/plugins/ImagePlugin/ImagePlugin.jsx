@@ -23,7 +23,7 @@ export default async function ImagePlugin(props) {
               alt={alt}
               width={0}
               height={0}
-              sizes="500px"
+              sizes="(max-width: 1920px) 500px, 420px"
               style={{ width: '100%', height: 'auto' }} 
             />
           </a>

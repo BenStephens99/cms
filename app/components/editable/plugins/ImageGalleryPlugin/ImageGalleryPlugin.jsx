@@ -16,21 +16,15 @@ export default async function ImageGalleryPlugin(props) {
       content={result?.content}
       display={
         <div className="image-gallery">
-          <div className="image-column">
-            {images.col1.map((img) => (
-              <ImagePlugin key={img} id={img} />
+          {Object.keys(images)
+            .sort()
+            .map((colKey) => (
+              <div className="image-column" key={colKey}>
+                {images[colKey].map((img) => (
+                  <ImagePlugin key={img} id={img} />
+                ))}
+              </div>
             ))}
-          </div>
-          <div className="image-column">
-            {images.col2.map((img) => (
-              <ImagePlugin key={img} id={img} />
-            ))}
-          </div>
-          <div className="image-column">
-            {images.col3.map((img) => (
-              <ImagePlugin key={img} id={img} />
-            ))}
-          </div>
         </div>
       }
     />
