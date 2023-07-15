@@ -3,6 +3,9 @@ import { useRouter } from "next/navigation";
 import { useAuthContext } from "../components/context/AuthContext";
 import { useEffect } from "react";
 
+import './admin.scss'
+
+import InitialiseSite from "./components/InitialiseSite";
 
 export default function Page() {
   const { user } = useAuthContext();
@@ -16,8 +19,8 @@ export default function Page() {
 
   if (user) {
     return (
-      <div>
-        <h1>Admin</h1>
+      <div className="admin-container">
+        <InitialiseSite />
       </div>
     );
   }

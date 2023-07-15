@@ -33,7 +33,6 @@ export default function FileManager(props) {
   useEffect(() => {
     if(props.openState) {
       fetchFoldersAndFiles();
-      console.log('fetching folders and files');
     }
   }, [currentDir, props.openState]);
 

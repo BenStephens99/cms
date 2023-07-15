@@ -13,3 +13,20 @@
         }
     }
 }
+
+.placeholderImage {
+    display: none;
+}
+
+.editing .placeholderImage {
+    display: block;
+}
+
+button {
+    width: min-content;
+    white-space: nowrap;
+
+    &.clear {
+        margin-left: auto;
+    }
+}

@@ -15,7 +15,7 @@ export default function EditImagePlugin(props) {
   const closeFileManager = () => {
     setFileManagerOpen(false)
   }
-   
+
   const onFileClick = async (file) => {
     setFileManagerOpen(false)
     const downloadURL = await getFileUrl(file)
@@ -26,9 +26,19 @@ export default function EditImagePlugin(props) {
     }))
   }
 
+  const clearContent = () => {
+    setUrl('')
+    props.setContent((prevContent) => ({
+      ...prevContent,
+      url: '',
+      alt: '',
+    }))
+  }
+
   return (
     <div className="edit-image-plugin">
-    <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick}/>
+      <FileManager openState={fileManagerOpen} close={closeFileManager} onFileClick={onFileClick} />
+      <button className="btn btn-danger clear" onClick={clearContent}>Clear</button>
       <div className="input-group">
         <span className="input-group-text">Image</span>
         <Image
@@ -58,6 +68,8 @@ export default function EditImagePlugin(props) {
           }
         ></textarea>
       </div>
+
     </div>
+
   );
 }

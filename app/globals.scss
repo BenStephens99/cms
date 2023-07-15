@@ -4,7 +4,8 @@
     --grey: #afafaf;
     --medium-shadow: #00000029;
     --darker-shadow: #0000007b;
-    --screen-width: 1600px;
+    --screen-width: 1280px;
+    --max-height: calc(90vh - 150px);
 }
 
 h1,
@@ -92,7 +93,7 @@ dialog {
     box-shadow: 0 0 5px var(--medium-shadow);
     padding: 0;
     overflow: hidden;
-    z-index: 50;
+    z-index: 1050;
 
     &::before {
         content: '';
@@ -140,13 +141,10 @@ dialog {
         overflow-y: auto;
 
         textarea {
-            resize: none;
             border: 1px solid var(--light-grey);
             font-family: inherit;
             border-radius: 4px;
             padding: 5px;
-            height: 100px;
-            width: 100%;
         }
     }
 

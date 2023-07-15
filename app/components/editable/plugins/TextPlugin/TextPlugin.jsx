@@ -6,9 +6,10 @@ export default async function TextPlugin(props) {
   return (
     <div className="text-plugin">
       <EditableSection id={props.id} type={result?.type} content={result?.content}
-        display={
-          <>{result?.content.text}</>
-        } />
+          display={
+            <pre style={{ whiteSpace: "pre-wrap", font: "inherit" }}>{result?.content.text}</pre>
+          }
+         />
     </div>
   );
 }
