@@ -1,22 +1,35 @@
 'use client'
 import { useState, useEffect } from 'react';
-import {usePathname} from 'next/navigation'
+import { usePathname } from 'next/navigation';
 
 export default function MobileMenu(props) {
-
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const pathname = usePathname()
+    const pathname = usePathname();
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-    }
+    };
 
-    useEffect(() => {
-        if(menuOpen) {  
+    const handleScroll = () => {
+        if (menuOpen) {
             toggleMenu();
         }
-    }, [pathname])
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [menuOpen]);
+
+    useEffect(() => {
+        if (menuOpen) {
+            toggleMenu();
+        }
+    }, [pathname]);
 
     return (
         <div className='mobile-menu'>
@@ -29,5 +42,5 @@ export default function MobileMenu(props) {
                 {props.nav}
             </div>
         </div>
-    )
+    );
 }

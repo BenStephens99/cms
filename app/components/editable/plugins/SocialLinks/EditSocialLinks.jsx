@@ -46,7 +46,6 @@ export default function EditSocialLinks(props) {
   };
 
   const handleActiveChange = (serviceName, value) => {
-    console.log(value)
     setServices(prevServices => ({
       ...prevServices,
       [serviceName]: {

@@ -1,12 +1,8 @@
 .gallery-menu {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     display: grid;
     gap: 10px;
     width: 100%;
-
-    @media (max-width: 1920px) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 
     @media (max-width: 1200px) {
         grid-template-columns: 1fr 1fr;

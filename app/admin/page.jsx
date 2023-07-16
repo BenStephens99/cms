@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import './admin.scss'
 
 import InitialiseSite from "./components/InitialiseSite";
+import MetaData from "./components/MetaData";
 
 export default function Page() {
   const { user } = useAuthContext();
@@ -21,6 +22,7 @@ export default function Page() {
     return (
       <div className="admin-container">
         <InitialiseSite />
+        <MetaData />
       </div>
     );
   }

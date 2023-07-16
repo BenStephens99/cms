@@ -4,6 +4,13 @@ import getDocument from '@/app/api/firebase/database/getDocument'
 import setData from '@/app/api/firebase/database/setData'
 import { toast } from 'react-hot-toast';
 
+const siteConfig = {
+    'metadata': {
+        title: 'Photography',
+        description: 'A collection of my photography work',
+    },
+}
+
 const basePlugins = {
     'header-text': {
         type: 'link-plugin',
@@ -39,13 +46,11 @@ const basePlugins = {
 }   
 
 export default async function InitialiseSite() {
-    let pluginsToInitialise = []
 
-    const initialisePlugins = async () => {
-        pluginsToInitialise.forEach(async (plugin) => {
-            await setData('editableSections', plugin, basePlugins[plugin])
-        })
-    }
+    let toUpdate = 0
+
+    let pluginsToInitialise = []
+    let configsToInitialise = []
 
     for (const plugin in basePlugins) {
         const res = await getDocument('editableSections', plugin)
@@ -53,14 +58,34 @@ export default async function InitialiseSite() {
             pluginsToInitialise.push(plugin)
         }
     }
+    for (const config in siteConfig) {
+        const res = await getDocument('siteConfig', config)
+
+        if (!res) {
+            configsToInitialise.push(config)
+        }
+    }
+
+    toUpdate = pluginsToInitialise.length + configsToInitialise.length
+
+    const initialisePlugins = async () => {
+        pluginsToInitialise.forEach(async (plugin) => {
+            await setData('editableSections', plugin, basePlugins[plugin])
+        })
+        configsToInitialise.forEach(async (config) => {
+            await setData('siteConfig', config, siteConfig[config])
+        })
+        
+        await fetch("/api/revalidate")
+    }
 
     let content
 
-    if (pluginsToInitialise.length) {
+    if (toUpdate > 0) {
         content =
             <>
                 <div className="alert alert-danger" role="alert">
-                    <p className="card-text">{`There are ${pluginsToInitialise.length} plugins missing.`}</p>
+                    <p className="card-text">{`There are ${toUpdate} plugins missing.`}</p>
                 </div>
                 <p>Press the button below to update your site</p>
                 <InitialisePlugins initialisePlugins={initialisePlugins} />
@@ -91,11 +116,11 @@ function InitialisePlugins(props) {
 
     const router = useRouter()
 
-    const initialisePlugins = () => {
-        props.initialisePlugins()
-        fetch("/api/revalidate")
-        router.refresh()
-        toast.success('Plugins Updated')
+    const initialisePlugins = () => { 
+        props.initialisePlugins().then(() => {  
+            router.refresh()
+            toast.success('Site updated')
+        })
     }
 
     return (
