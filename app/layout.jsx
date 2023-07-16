@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ['latin'] })
 export async function generateMetadata() {
   const meta = await getDocument('siteConfig', 'metadata');
   return { 
-    title: meta?.title ? meta.title : "Photography",
-    description: meta?.description ? meta.description : "A collection of my photography work",
+    title: meta?.title ? meta.title : "Website Title",
+    description: meta?.description ? meta.description : "A collection of my work",
   };
 }
 
