@@ -10,11 +10,6 @@ import getDocument from './api/firebase/database/getDocument'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Photography',
-  description: 'A collection of my photography work',
-}
-
 export async function generateMetadata() {
   const meta = await getDocument('siteConfig', 'metadata');
   return { 
