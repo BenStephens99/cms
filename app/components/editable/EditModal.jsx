@@ -13,7 +13,6 @@ import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
 import EditLinkPlugin from "./plugins/LinkPlugin/EditLinkPlugin"
 import EditSocialLinks from "./plugins/SocialLinks/EditSocialLinks"
 
-
 export default function EditModal(props) {
   let component = null
   let collection = 'editableSections'
