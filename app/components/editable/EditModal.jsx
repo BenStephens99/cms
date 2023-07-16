@@ -11,6 +11,7 @@ import EditImageGalleryPlugin from "./plugins/ImageGalleryPlugin/EditImageGaller
 import deleteDocument from "@/app/api/firebase/database/deleteDocument"
 import EditGalleryMenu from "./plugins/GalleryMenu/EditGalleryMenu"
 import EditLinkPlugin from "./plugins/LinkPlugin/EditLinkPlugin"
+import EditSocialLinks from "./plugins/SocialLinks/EditSocialLinks"
 
 
 export default function EditModal(props) {
@@ -55,9 +56,11 @@ export default function EditModal(props) {
     case "link-plugin":
       component = <EditLinkPlugin id={props.id} content={content} setContent={setContent} />
       break;
-
+    case "social-links-plugin":
+      component = <EditSocialLinks id={props.id} content={content} setContent={setContent} />
+      break;
     default:
-      component = <p>Unknown type</p>
+      component = <p>Unknown type (check admin page for plugins that need updating)</p>
   }
 
   const updatePlugin = async (e) => {
@@ -69,6 +72,7 @@ export default function EditModal(props) {
     setDeletedDocs([])
     await fetch("/api/revalidate")
     props.closeModal()
+    router.refresh()
     toast.success("Plugin updated")
   }
 
@@ -76,7 +80,6 @@ export default function EditModal(props) {
     e.stopPropagation()
     setDeletedDocs([])
     props.closeModal()
-
     for (let doc of newDocs) {
       await deleteDocument(collection, doc)
     }

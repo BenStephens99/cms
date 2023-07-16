@@ -2,6 +2,7 @@ import '../admin.scss'
 
 import getDocument from '@/app/api/firebase/database/getDocument'
 import setData from '@/app/api/firebase/database/setData'
+import { toast } from 'react-hot-toast';
 
 const basePlugins = {
     'header-text': {
@@ -15,7 +16,7 @@ const basePlugins = {
         type: 'gallery-menu',
         content: {
             items: []
-        }   
+        }
     },
     'about-text': {
         type: 'text-plugin',
@@ -30,8 +31,12 @@ const basePlugins = {
             alt: '',
         }
     },
-
-}
+    'header-social-links': {
+        type: "social-links-plugin",
+        content: {
+        }
+    },
+}   
 
 export default async function InitialiseSite() {
     let pluginsToInitialise = []
@@ -62,11 +67,9 @@ export default async function InitialiseSite() {
             </>
     } else {
         content =
-
             <div className="alert alert-success" role="alert">
                 <p className="card-text">Your site is up to date</p>
             </div>
-
     }
 
     return (
@@ -90,7 +93,9 @@ function InitialisePlugins(props) {
 
     const initialisePlugins = () => {
         props.initialisePlugins()
+        fetch("/api/revalidate")
         router.refresh()
+        toast.success('Plugins Updated')
     }
 
     return (
