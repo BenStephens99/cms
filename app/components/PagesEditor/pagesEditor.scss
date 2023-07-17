@@ -26,8 +26,8 @@
 .pages-editor {
     padding: 10px;
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     width: 100%;
     overflow-x: scroll;
@@ -38,14 +38,6 @@
     border-bottom-right-radius: 8px;
     margin-bottom: 20px;
 
-    @media (max-width: 900px) {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    @media (max-width: 650px) {
-        grid-template-columns: 1fr;
-    }
-
     &.hide {
         height: 0px;
         opacity: 0;
@@ -55,9 +47,15 @@
 
     .page {
         display: flex;
+        gap: 30px;
+        width: min-content;
         align-items: center;
-        gap: 40px;
         cursor: pointer;
+
+        @media (max-width: 650px) {
+            width: 100%;
+        }
+
         &.selected {
             background-color: var(--light-grey);
             border: 1px solid var(--grey);
@@ -70,17 +68,8 @@
 }
 
 .add-new-page {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 100%;
-
     input {
         border: none;
-    }
-
-    button {
-        white-space: nowrap;
-        margin-left: auto;
+        max-width: 150px;
     }
 }

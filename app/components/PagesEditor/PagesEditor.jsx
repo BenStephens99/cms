@@ -6,6 +6,7 @@ import getAllDocumentNames from '@/app/api/firebase/database/getAllDocumentNames
 import deleteDocument from '@/app/api/firebase/database/deleteDocument';
 import setData from '@/app/api/firebase/database/setData';
 import { PlusLg } from 'react-bootstrap-icons';
+import { Trash } from 'react-bootstrap-icons';
 import { toast } from 'react-hot-toast';
 import { CaretRightFill } from 'react-bootstrap-icons';
 import getDocument from '@/app/api/firebase/database/getDocument';
@@ -30,7 +31,8 @@ export default function PagesEditor(props) {
     fetchPageContent();
   }, [props.id]);
 
-  const deletePage = async (id, page) => {
+  const deletePage = async (e, id, page) => {
+    e.stopPropagation();
     const confirmed = confirm(`Are you sure you want to delete ${page}?`);
 
     if (confirmed) {
@@ -113,13 +115,13 @@ export default function PagesEditor(props) {
         {pages?.map((page, index) => (
           <div className={`page ${props.selectedUrl === props.id + '/' + page ? 'selected' : ''} form-control`} key={index} onClick={() => setSelected(props.id + '/' + page)}>
             <span>{`${props.id}/${page}`}</span>
-            <button className="btn btn-danger" onClick={() => deletePage(props.id, page)}>Delete</button>
+            <button className="btn btn-danger" onClick={(e) => deletePage(e, props.id, page)}><Trash height={'1.2em'} width={'1.2em'}/></button>
           </div>
         ))}
-        <div className='add-new-page form-control'>
+        <div className='add-new-page page form-control'>
           <input type="text" placeholder={`New ${props.id}`} value={pageName}
             onChange={(e) => setPageName(e.target.value)} />
-          <button className="btn btn-primary" onClick={addPage}><PlusLg height={"1.5em"} width={'1.5em'} /></button>
+          <button className="btn btn-primary" onClick={addPage}><PlusLg height={"1.2em"} width={'1.2em'} /></button>
         </div>
       </div>
     </>
