@@ -13,7 +13,7 @@ export default async function Header() {
   const nav =
     <nav>
       <ul>
-        <MenuDropdown galleries={galleries} />
+        <li className='no-padding'><MenuDropdown galleries={galleries} /></li>
         <li><Link href={'/about'}>About</Link></li>
         <li><Link href={'/contact'}>Contact</Link></li>
         <li><SocialLinksPlugin id="header-social-links" /></li>
