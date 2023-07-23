@@ -15,7 +15,7 @@ export default function MenuDropdown(props) {
     };
 
     return (
-        <DropdownButton variant="none" id="dropdown-basic-button" title="Galleries">
+        <DropdownButton variant="none" title="Galleries">
             {galleries.map((gallery) => (
                 <Dropdown.Item key={gallery} href={`/gallery/${gallery}`}>
                     {formatGalleryName(gallery)}

@@ -15,8 +15,8 @@ export default async function Header() {
       <ul>
         <MenuDropdown galleries={galleries} />
         <li><Link href={'/about'}>About</Link></li>
-        <li>Contact</li>
-        <SocialLinksPlugin id="header-social-links" />
+        <li><Link href={'/contact'}>Contact</Link></li>
+        <li><SocialLinksPlugin id="header-social-links" /></li>
       </ul>
     </nav>
 

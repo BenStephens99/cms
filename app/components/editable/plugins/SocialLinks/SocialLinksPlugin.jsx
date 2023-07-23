@@ -38,7 +38,7 @@ export default async function SocialLinksPlugin(props) {
                 }
                 if (IconComponent) {
                   return (
-                    <Link className="social-link" href={value.link} target="_blank" rel="noreferrer" key={key}>
+                    <Link className="social-link" aria-label={value.link} href={value.link} target="_blank" rel="noreferrer" key={key}>
                         <IconComponent width={'1.5em'} height={'1.5em'}/>
                     </Link>
                   );
