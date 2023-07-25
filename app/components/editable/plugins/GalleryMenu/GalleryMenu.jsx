@@ -22,7 +22,7 @@ export default async function GalleryMenu(props) {
                   alt={item.url}
                   width={0}
                   height={0}
-                  sizes="400px"
+                  sizes="650px"
                 />
               </Link>
             </div>
