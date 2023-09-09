@@ -24,6 +24,7 @@ export default function uploadImages(filePath, newExtension = "webp") {
 
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
+        const loadingToast = toast.loading(`Uploading ${file.name}`);
         try {
           const image = new Image();
           image.src = URL.createObjectURL(file);
@@ -50,13 +51,25 @@ export default function uploadImages(filePath, newExtension = "webp") {
             canvas.toBlob(async (blob) => {
               const newFileName = `${file.name.replace(/\.[^/.]+$/, '')}.${newExtension}`;
               const storageRef = ref(storage, `${filePath}/${newFileName}`);
-              await uploadBytes(storageRef, blob);
-              const downloadURL = await getDownloadURL(storageRef);
-              uploadedUrls.push(downloadURL);
 
-              if (uploadedUrls.length === files.length) {
-                toast.success("All files uploaded successfully");
-                resolve(uploadedUrls);
+              try {
+                await uploadBytes(storageRef, blob);
+                const downloadURL = await getDownloadURL(storageRef);
+                uploadedUrls.push(downloadURL);
+
+                if (uploadedUrls.length === files.length) {
+                  toast.success("All files uploaded successfully");
+                  resolve(uploadedUrls);
+                }
+              } catch (error) {
+                toast.error(`Error uploading ${file.name}`);
+                console.error(`Error uploading ${file.name}:`, error);
+
+                // If an error occurs, reject the promise immediately
+                reject(error);
+              } finally {
+                // Close the loading notification when the upload is complete or if an error occurs
+                toast.dismiss(loadingToast);
               }
             }, `image/${newExtension}`, 0.9); // 0.9 is the quality parameter, adjust as needed
           };
