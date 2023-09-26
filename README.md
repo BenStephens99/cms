@@ -1,5 +1,5 @@
 ## Demo
-[https://github.com/BenStephens99/cms](https://photography-cms-dev.vercel.app/)
+https://photography-cms-dev.vercel.app/
 
 ## Getting Started
 
