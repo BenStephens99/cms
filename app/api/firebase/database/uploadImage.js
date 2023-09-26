@@ -8,7 +8,7 @@ export default function uploadImages(filePath, newExtension = "webp") {
   return new Promise(async (resolve, reject) => {
     const input = document.createElement("input");
     input.type = "file";
-    input.accept = "image/*"; 
+    input.accept = "image/*";
     input.multiple = true; 
 
     input.addEventListener("change", async () => {
