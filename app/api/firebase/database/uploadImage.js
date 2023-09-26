@@ -3,14 +3,13 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { toast } from "react-hot-toast";
 
 const storage = getStorage(firebase_app);
-const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
 export default function uploadImages(filePath, newExtension = "webp") {
   return new Promise(async (resolve, reject) => {
     const input = document.createElement("input");
     input.type = "file";
-    input.accept = "image/*"; // Accept any image type
-    input.multiple = true; // Allow multiple file selection
+    input.accept = "image/*";
+    input.multiple = true; 
 
     input.addEventListener("change", async () => {
       const files = input.files;
