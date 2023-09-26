@@ -34,7 +34,6 @@ export default function uploadImages(filePath, newExtension = "webp") {
             let width = image.width;
             let height = image.height;
 
-            // Check if the image width is greater than the maximum width
             if (width > maxWidth) {
               const scaleFactor = maxWidth / width;
               width = maxWidth;
@@ -47,7 +46,6 @@ export default function uploadImages(filePath, newExtension = "webp") {
             canvas.height = height;
             ctx.drawImage(image, 0, 0, width, height);
 
-            // Convert the resized image to WebP format
             canvas.toBlob(async (blob) => {
               const newFileName = `${file.name.replace(/\.[^/.]+$/, '')}.${newExtension}`;
               const storageRef = ref(storage, `${filePath}/${newFileName}`);
@@ -65,19 +63,16 @@ export default function uploadImages(filePath, newExtension = "webp") {
                 toast.error(`Error uploading ${file.name}`);
                 console.error(`Error uploading ${file.name}:`, error);
 
-                // If an error occurs, reject the promise immediately
                 reject(error);
               } finally {
-                // Close the loading notification when the upload is complete or if an error occurs
                 toast.dismiss(loadingToast);
               }
-            }, `image/${newExtension}`, 0.9); // 0.9 is the quality parameter, adjust as needed
+            }, `image/${newExtension}`, 0.9); 
           };
         } catch (error) {
           toast.error(`Error uploading ${file.name}`);
           console.error(`Error uploading ${file.name}:`, error);
 
-          // If an error occurs, reject the promise immediately
           reject(error);
         }
       }
