@@ -66,7 +66,7 @@ export default function uploadImages(filePath, newExtension = "webp") {
               } finally {
                 toast.dismiss(loadingToast);
               }
-            }, `image/${newExtension}`, 0.9); // 0.9 is the quality parameter
+            }, `image/${newExtension}`, 0.9); 
           };
         } catch (error) {
           toast.error(`Error uploading ${file.name}`);
