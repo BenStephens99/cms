@@ -5,6 +5,7 @@ import EditImagePlugin from "./plugins/ImagePlugin/EditImagePlugin"
 import { X } from "react-bootstrap-icons"
 import updateDocument from "@/app/api/firebase/database/updateDocument"
 import { useRouter } from "next/navigation"
+import { getImageData } from "@/app/common"
 import "./editModal.scss"
 import { toast } from "react-hot-toast"
 import EditImageGalleryPlugin from "./plugins/ImageGalleryPlugin/EditImageGalleryPlugin"
@@ -19,7 +20,7 @@ export default function EditModal(props) {
 
   const router = useRouter()
 
-  const [content, setContent] = useState({ ...props.content })
+  const [content, setContent] = useState(props.content)
 
   const [newDocs, setNewDocs] = useState([])
 
@@ -43,6 +44,15 @@ export default function EditModal(props) {
       component = <EditTextPlugin id={props.id} content={content} setContent={setContent} />
       break;
     case "image-plugin":
+      if (!content?.width && !content?.height) {
+        getImageData(content.url, function(result) {
+            updateDocument(collection, props.id, {
+              ...content,
+              width: result.width,
+              height: result.height
+            })
+        });
+      }
       component = <EditImagePlugin id={props.id} content={content} setContent={setContent} />
       break;
     case "gallery-plugin":
@@ -63,6 +73,7 @@ export default function EditModal(props) {
   }
 
   const updatePlugin = async (e) => {
+    console.log(content)
     await updateDocument(collection, props.id, content)
     setNewDocs([])
     for (let doc of deletedDocs) {

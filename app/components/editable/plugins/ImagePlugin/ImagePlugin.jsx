@@ -13,22 +13,26 @@ export default async function ImagePlugin(props) {
   const content = {
     url: result?.content.url,
     alt: alt,
+    width: result?.content.width || 1,
+    height: result?.content.height || 1,
   }
 
   return (
-      <EditableSection id={props.id} type={result?.type} content={content}
-        display={
-          <a href={result?.content?.url} target="_blank" rel="noreferrer" style={{ cursor: 'pointer' }}>
-            <Image
-              src={result?.content.url ? result?.content.url : placeHolderImage}
-              className={result?.content.url ? '' : 'placeholderImage'}
-              alt={alt}
-              width={0}
-              height={0}
-              sizes="(max-width: 1920px) 500px, 420px"
-              style={{ width: '100%', height: 'auto' }} 
-            />
-          </a>
-        } />
+    <EditableSection id={props.id} type={result?.type} content={content}
+      display={
+        <a href={result?.content?.url} target="_blank" rel="noreferrer" style={{ cursor: 'pointer' }}>
+          <Image
+            src={result?.content.url ? result?.content.url : placeHolderImage}
+            className={result?.content.url ? '' : 'placeholderImage'}
+            alt={alt}
+            width={0}
+            height={0}
+            sizes="(max-width: 1920px) 500px, 420px"
+            style={{ width: '100%', height: 'auto', aspectRatio: `${result?.content.width}/${result?.content.height}` }} 
+          />
+        </a>
+      }
+    />
   );
 }
+

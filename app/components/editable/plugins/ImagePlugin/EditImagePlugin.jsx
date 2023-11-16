@@ -5,6 +5,7 @@ import FileManager from "@/app/components/fileManager/FileManager"
 import getFileUrl from "@/app/api/firebase/database/getFileUrl"
 import './imagePlugin.scss'
 import placeHolderImage from '@/app/assets/images/placeholder-image.png'
+import { getImageData } from "@/app/common"
 
 export default function EditImagePlugin(props) {
 
@@ -20,10 +21,14 @@ export default function EditImagePlugin(props) {
     setFileManagerOpen(false)
     const downloadURL = await getFileUrl(file)
     setUrl(downloadURL)
-    props.setContent((prevContent) => ({
-      ...prevContent,
-      url: downloadURL,
-    }))
+    getImageData(downloadURL, function(result) {
+      props.setContent((prevContent) => ({
+        ...prevContent,
+        url: downloadURL,
+        width: result.width,
+        height: result.height
+      }))
+    });
   }
 
   const clearContent = () => {
@@ -32,6 +37,8 @@ export default function EditImagePlugin(props) {
       ...prevContent,
       url: '',
       alt: '',
+      width: '',
+      height: ''
     }))
   }
 
