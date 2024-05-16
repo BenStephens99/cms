@@ -7,6 +7,7 @@ import TopBar from './components/admin/TopBar'
 import { EditModeProvider } from './components/context/EditContext'
 import Header from './components/editable/Header/Header'
 import getDocument from './api/firebase/database/getDocument'
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
             </main>
           </EditModeProvider >
         </AuthContextProvider>
+        <Analytics />
       </body>
     </html>
   )
